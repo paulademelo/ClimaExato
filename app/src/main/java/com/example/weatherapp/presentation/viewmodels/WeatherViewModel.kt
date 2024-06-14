@@ -33,7 +33,7 @@ class WeatherViewModel @Inject constructor(
                     else -> WeatherUiState.Error("Erro ao obter dados: ${weatherResult.exceptionOrNull()?.message ?: "Erro desconhecido"}")
                 }
             } catch (e: Exception) {
-                _uiState.value = WeatherUiState.Error("Erro ao carregar dados.")
+                _uiState.value = WeatherUiState.Error("Erro ao carregar dados, Tente novamente.")
             }
         }
     }
