@@ -1,13 +1,9 @@
 package com.example.weatherapp.presentation.viewmodels
 
-import android.content.Context
-import android.location.Location
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.data.api.WeatherResponse
 import com.example.weatherapp.data.repositories.WeatherRepository
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -21,7 +17,12 @@ class WeatherViewModel @Inject constructor(
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<WeatherUiState>(WeatherUiState.Idle)
     val uiState: StateFlow<WeatherUiState> = _uiState.asStateFlow()
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    init {
+        viewModelScope.launch {
+            fetchWeatherForCity("São Paulo")
+        }
+    }
 
     fun fetchWeatherForCity(cityName: String) {
         viewModelScope.launch {
@@ -36,10 +37,6 @@ class WeatherViewModel @Inject constructor(
                 _uiState.value = WeatherUiState.Error("Erro ao carregar dados, Tente novamente.")
             }
         }
-    }
-
-    fun initializeLocationClient(context: Context) {
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
     }
 
     sealed class WeatherUiState {

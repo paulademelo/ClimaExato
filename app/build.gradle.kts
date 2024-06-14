@@ -16,7 +16,8 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        val openWeatherMapApiKey = project.findProperty("OPEN_WEATHERMAP_API_KEY") as String? ?: "default_api_key"
+        val openWeatherMapApiKey =
+            project.findProperty("OPEN_WEATHERMAP_API_KEY") as String? ?: "default_api_key"
         buildConfigField("String", "OPEN_WEATHERMAP_API_KEY", "\"${openWeatherMapApiKey}\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -68,6 +69,11 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.lifecycleViewModel)
+    implementation(libs.play.services.basement)
+    implementation(libs.play.services.location)
+    implementation(libs.lottie.compose)
+    implementation(libs.accompanist)
+    implementation(libs.coil.compose)
 
     // Retrofit
     implementation(libs.retrofit)
@@ -75,8 +81,6 @@ dependencies {
 
     // Dagger Hilt
     implementation(libs.hilt.android)
-    implementation(libs.play.services.basement)
-    implementation(libs.play.services.location)
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
 
