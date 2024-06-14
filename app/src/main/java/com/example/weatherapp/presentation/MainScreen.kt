@@ -1,6 +1,7 @@
 package com.example.weatherapp.presentation
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.runtime.collectAsState
@@ -24,6 +25,7 @@ import com.example.weatherapp.presentation.viewmodels.WeatherViewModel
 import androidx.hilt.navigation.compose.hiltViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @Composable
 fun MainScreen(viewModel: WeatherViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
@@ -31,7 +33,8 @@ fun MainScreen(viewModel: WeatherViewModel = hiltViewModel()) {
 
     Column(
         modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
         OutlinedTextField(
             value = cityName,

@@ -14,6 +14,7 @@ class WeatherRepositoryImpl @Inject constructor(
     override suspend fun getWeatherForLocation(locationName: String): Result<WeatherResponse> {
         return try {
             val response = openWeatherMapService.getCurrentWeather(locationName, apiKey)
+//            val response = openWeatherMapService.getCurrentWeather(locationName, "acd4e6d9a404739b28111303f4c7a050")
             if (response.isSuccessful) {
                 val weatherResponse = response.body()
                 if (weatherResponse != null) {

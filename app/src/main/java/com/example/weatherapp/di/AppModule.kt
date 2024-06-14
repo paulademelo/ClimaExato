@@ -16,7 +16,4 @@ interface AppModule {
     @Singleton
     fun bindWeatherRepository(weatherRepositoryImpl: WeatherRepositoryImpl): WeatherRepository
 
-//    @Binds
-//    @Singleton
-//    fun bindWeatherApi(retrofitHelper: Retrofit): WeatherApi
 }

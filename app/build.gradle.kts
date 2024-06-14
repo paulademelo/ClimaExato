@@ -16,6 +16,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        val openWeatherMapApiKey = project.findProperty("OPEN_WEATHERMAP_API_KEY") as String? ?: "default_api_key"
+        buildConfigField("String", "OPEN_WEATHERMAP_API_KEY", "\"${openWeatherMapApiKey}\"")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -26,8 +29,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -39,6 +41,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
     composeOptions {

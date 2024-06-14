@@ -1,5 +1,6 @@
 package com.example.weatherapp.di
 
+import com.example.weatherapp.BuildConfig
 import com.example.weatherapp.data.api.OpenWeatherMapService
 import dagger.Module
 import dagger.Provides
@@ -9,7 +10,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 import com.example.weatherapp.di.OpenWeatherMapApiKey
-
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -32,7 +32,6 @@ object NetworkModule {
     @Provides
     @OpenWeatherMapApiKey
     fun provideOpenWeatherMapApiKey(): String {
-        return "OPEN_WEATHERMAP_API_KEY"
+        return BuildConfig.OPEN_WEATHERMAP_API_KEY
     }
-
 }
