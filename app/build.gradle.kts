@@ -53,10 +53,6 @@ android {
             useLegacyPackaging = false
         }
     }
-    hilt {
-        enableAggregatingTask = true
-        enableTransformForLocalTests = true
-    }
 }
 
 dependencies {
