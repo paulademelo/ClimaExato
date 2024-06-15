@@ -32,7 +32,7 @@ fun SearchBar(cityName: String, onCityNameChange: (String) -> Unit, onSearch: ()
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = 50.dp, start = 16.dp, end = 16.dp, top = 16.dp),
+            .padding(bottom = 50.dp, start = 16.dp, end = 16.dp, top = 40.dp),
         contentAlignment = Alignment.CenterEnd,
     ) {
         OutlinedTextField(

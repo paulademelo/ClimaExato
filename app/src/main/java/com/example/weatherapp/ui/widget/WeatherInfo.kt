@@ -34,7 +34,7 @@ fun WeatherInfo(uiStateValue: WeatherViewModel.WeatherUiState.Success) {
 
     Column(
         modifier = Modifier
-            .padding(top = 50.dp),
+            .padding(top = 70.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column(

@@ -41,75 +41,37 @@ fun MainScreen(viewModel: WeatherViewModel = hiltViewModel()) {
     if (splashScreen) {
         SplashScreen()
     } else {
-        Box(modifier = Modifier.fillMaxSize()) {
-            when (val uiStateValue = uiState) {
-                is WeatherViewModel.WeatherUiState.Success -> {
-                    val weather = uiStateValue.weather
-                    val backgroundColor = backgroundBrush(weather.weather.firstOrNull()?.id)
-
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(backgroundColor)
-                    ) {}
-                }
-
-                is WeatherViewModel.WeatherUiState.Error -> {
-                    WeatherError(text = "Não conseguimos encontrar a cidade, tente novamente!")
-                }
-
-                else -> {
-                    Box(
-                        modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
-                    ) {
-                        CircularProgressIndicator()
-                    }
-                }
+        Box(modifier = Modifier.fillMaxSize())
+        when (val uiStateValue = uiState) {
+            is WeatherViewModel.WeatherUiState.Success -> {
+                val weather = uiStateValue.weather
+                val backgroundColor = backgroundBrush(weather.weather.firstOrNull()?.id)
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(backgroundColor)
+                ) {}
+                WeatherInfo(uiStateValue)
             }
 
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .imePadding()
-                    .padding(all = 16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Top
-            ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    when (val uiStateValue = uiState) {
-                        is WeatherViewModel.WeatherUiState.Loading -> {
-                            Box(
-                                modifier = Modifier.fillMaxSize(),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                CircularProgressIndicator()
-                            }
-                        }
-
-                        is WeatherViewModel.WeatherUiState.Success -> {
-                            WeatherInfo(uiStateValue)
-                        }
-
-                        is WeatherViewModel.WeatherUiState.Error -> {
-                            // error
-                        }
-
-                        WeatherViewModel.WeatherUiState.Idle -> {
-                            // charging
-                        }
-                    }
-                }
+            is WeatherViewModel.WeatherUiState.Error -> {
+                WeatherError(text = "Não conseguimos encontrar a cidade, tente novamente!")
             }
-            Box(
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-            ) {
-                SearchBar(
-                    cityName = cityName,
-                    onCityNameChange = { cityName = it },
-                    onSearch = { viewModel.fetchWeatherForCity(cityName) }
-                )
+
+            is WeatherViewModel.WeatherUiState.Loading,
+            WeatherViewModel.WeatherUiState.Idle -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
+                }
             }
         }
+        SearchBar(
+            cityName = cityName,
+            onCityNameChange = { cityName = it },
+            onSearch = { viewModel.fetchWeatherForCity(cityName) },
+        )
     }
 }
