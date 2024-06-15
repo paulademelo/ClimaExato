@@ -28,7 +28,7 @@ class WeatherViewModel @Inject constructor(
         viewModelScope.launch {
             _uiState.value = WeatherUiState.Loading
             try {
-                val weatherResult = weatherRepository.getWeatherForLocation(cityName)
+                val weatherResult = weatherRepository.getWeatherForLocation(cityName.trim())
                 _uiState.value = when {
                     weatherResult.isSuccess -> WeatherUiState.Success(weatherResult.getOrThrow())
                     else -> WeatherUiState.Error("Erro ao obter dados: ${weatherResult.exceptionOrNull()?.message ?: "Erro desconhecido"}")

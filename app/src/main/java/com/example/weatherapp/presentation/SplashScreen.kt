@@ -49,6 +49,7 @@ fun SplashScreen() {
                     fontSize = 24.sp,
                     textAlign = TextAlign.Start,
                     fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Thin
                 )
             )
         }

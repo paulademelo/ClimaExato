@@ -40,6 +40,6 @@ fun backgroundBrush(weatherId: Int?): Brush {
             colors = listOf(Color(0xFF778899), Color(0xFFB0C4DE))
         )
 
-        else -> Brush.verticalGradient(colors = listOf(Color.White, Color.White))
+        else -> Brush.verticalGradient(colors = listOf(Color(0xFF4682B4), Color(0xFF87CEEB)))
     }
 }
