@@ -43,7 +43,7 @@ Coroutines são utilizadas no projeto para realizar operações assíncronas, co
 
 ## Contribuições
 
-Contribuições são bem-vindas! Se você encontrar algum problema ou tiver alguma sugestão, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+Contribuições são bem-vindas! Se você encontrar algum problema ou tiver alguma sugestão, sinta-se à vontade para abrir uma issue.
 
 ## Autor
 Paula de Melo
