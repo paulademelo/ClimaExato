@@ -15,12 +15,9 @@ class WeatherRepositoryImpl @Inject constructor(
         return try {
             val response = openWeatherMapService.getCurrentWeather(locationName, apiKey)
             if (response.isSuccessful) {
-                val weatherResponse = response.body()
-                if (weatherResponse != null) {
-                    Result.success(weatherResponse)
-                } else {
-                    Result.failure(Exception("Empty response body"))
-                }
+                response.body()?.let {
+                    Result.success(it)
+                } ?: Result.failure(Exception("Empty response body"))
             } else {
                 Result.failure(Exception("Request failed with code ${response.code()}"))
             }

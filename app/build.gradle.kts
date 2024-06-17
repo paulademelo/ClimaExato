@@ -16,6 +16,16 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        val baseUrl =
+            project.findProperty("BASE_URL") as String?
+                ?: "https://api.openweathermap.org/data/2.5/"
+        buildConfigField("String", "BASE_URL", "\"${baseUrl}\"")
+
+        val openWeatherMapApiKey =
+            project.findProperty("OPEN_WEATHERMAP_API_KEY") as String? ?: "default_api_key"
+        buildConfigField("String", "OPEN_WEATHERMAP_API_KEY", "\"${openWeatherMapApiKey}\"")
+
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -26,8 +36,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -39,6 +48,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
     composeOptions {
@@ -53,10 +63,6 @@ android {
             useLegacyPackaging = false
         }
     }
-    hilt {
-        enableAggregatingTask = true
-        enableTransformForLocalTests = true
-    }
 }
 
 dependencies {
@@ -69,6 +75,11 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.lifecycleViewModel)
+    implementation(libs.play.services.basement)
+    implementation(libs.play.services.location)
+    implementation(libs.lottie.compose)
+    implementation(libs.accompanist)
+    implementation(libs.coil.compose)
 
     // Retrofit
     implementation(libs.retrofit)
@@ -76,8 +87,6 @@ dependencies {
 
     // Dagger Hilt
     implementation(libs.hilt.android)
-    implementation(libs.play.services.basement)
-    implementation(libs.play.services.location)
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
 
