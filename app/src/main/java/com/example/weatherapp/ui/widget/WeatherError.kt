@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.Close
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,6 +21,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.weatherapp.ui.theme.LinearGradientSunny
 
 @Composable
 fun WeatherError(text: String) {
@@ -28,10 +30,7 @@ fun WeatherError(text: String) {
             .fillMaxSize()
             .background(
                 brush = Brush.verticalGradient(
-                    colors = listOf(
-                        Color(0xFF4682B4),
-                        Color(0xFF87CEEB)
-                    )
+                    colors = LinearGradientSunny()
                 )
             ),
         contentAlignment = Alignment.Center
@@ -42,20 +41,15 @@ fun WeatherError(text: String) {
         ) {
             Icon(
                 imageVector = Icons.TwoTone.Close,
-                contentDescription = "",
+                contentDescription = "Ícone de erro",
                 modifier = Modifier
-                    .padding(bottom = 24.dp, top = 24.dp)
+                    .padding(vertical = 20.dp)
                     .size(48.dp),
                 tint = Color.Red
             )
             Text(
                 text = text,
-                style = TextStyle(
-                    color = Color.DarkGray,
-                    fontSize = 24.sp,
-                    textAlign = TextAlign.Center,
-                    fontFamily = FontFamily.SansSerif,
-                ),
+                style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(top = 16.dp)
             )
         }

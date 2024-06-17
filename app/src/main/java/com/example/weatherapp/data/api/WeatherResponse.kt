@@ -7,6 +7,9 @@ import com.example.weatherapp.data.models.Sys
 import com.example.weatherapp.data.models.WeatherDescription
 import com.example.weatherapp.data.models.Wind
 
+/**
+ * Data class representing the weather response from the API.
+ */
 data class WeatherResponse(
     val coord: Coordinates,
     val weather: List<WeatherDescription>,

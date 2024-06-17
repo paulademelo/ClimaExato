@@ -41,37 +41,38 @@ fun MainScreen(viewModel: WeatherViewModel = hiltViewModel()) {
     if (splashScreen) {
         SplashScreen()
     } else {
-        Box(modifier = Modifier.fillMaxSize())
-        when (val uiStateValue = uiState) {
-            is WeatherViewModel.WeatherUiState.Success -> {
-                val weather = uiStateValue.weather
-                val backgroundColor = backgroundBrush(weather.weather.firstOrNull()?.id)
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(backgroundColor)
-                ) {}
-                WeatherInfo(uiStateValue)
-            }
+        Box(modifier = Modifier.fillMaxSize()) {
+            when (val uiStateValue = uiState) {
+                is WeatherViewModel.WeatherUiState.Success -> {
+                    val weather = uiStateValue.weather
+                    val backgroundColor = backgroundBrush(weather.weather.firstOrNull()?.id)
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(backgroundColor)
+                    ) {}
+                    WeatherInfo(uiStateValue)
+                }
 
-            is WeatherViewModel.WeatherUiState.Error -> {
-                WeatherError(text = "Não conseguimos encontrar a cidade, tente novamente!")
-            }
+                is WeatherViewModel.WeatherUiState.Error -> {
+                    WeatherError(text = "Não conseguimos encontrar a cidade, tente novamente!")
+                }
 
-            is WeatherViewModel.WeatherUiState.Loading,
-            WeatherViewModel.WeatherUiState.Idle -> {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator()
+                is WeatherViewModel.WeatherUiState.Loading,
+                WeatherViewModel.WeatherUiState.Idle -> {
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator()
+                    }
                 }
             }
+            SearchBar(
+                cityName = cityName,
+                onCityNameChange = { cityName = it },
+                onSearch = { viewModel.fetchWeatherForCity(cityName) },
+            )
         }
-        SearchBar(
-            cityName = cityName,
-            onCityNameChange = { cityName = it },
-            onSearch = { viewModel.fetchWeatherForCity(cityName) },
-        )
     }
 }

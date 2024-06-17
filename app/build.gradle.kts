@@ -16,9 +16,15 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        val baseUrl =
+            project.findProperty("BASE_URL") as String?
+                ?: "https://api.openweathermap.org/data/2.5/"
+        buildConfigField("String", "BASE_URL", "\"${baseUrl}\"")
+
         val openWeatherMapApiKey =
             project.findProperty("OPEN_WEATHERMAP_API_KEY") as String? ?: "default_api_key"
         buildConfigField("String", "OPEN_WEATHERMAP_API_KEY", "\"${openWeatherMapApiKey}\"")
+
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

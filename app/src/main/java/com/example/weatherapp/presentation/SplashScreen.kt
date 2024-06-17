@@ -20,6 +20,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.weatherapp.R.raw.sun
+import com.example.weatherapp.ui.theme.LinearGradientSunny
 
 @Composable
 fun SplashScreen() {
@@ -31,7 +32,7 @@ fun SplashScreen() {
             .fillMaxSize()
             .background(
                 brush = Brush.verticalGradient(
-                    colors = linearGradient()
+                    colors = LinearGradientSunny()
                 )
             ),
         contentAlignment = Alignment.Center
@@ -49,15 +50,9 @@ fun SplashScreen() {
                     fontSize = 24.sp,
                     textAlign = TextAlign.Start,
                     fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Thin
+                    fontWeight = FontWeight.SemiBold
                 )
             )
         }
     }
 }
-
-@Composable
-private fun linearGradient(): List<Color> = listOf(
-    Color(0xFF87CEEB),
-    Color(0xFF4682B4)
-)

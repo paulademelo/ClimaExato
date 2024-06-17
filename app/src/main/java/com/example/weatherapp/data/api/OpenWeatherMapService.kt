@@ -5,6 +5,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import  com.example.weatherapp.data.api.WeatherResponse
 
+/**
+ * Service interface to communicate with OpenWeatherMap API.
+ */
 interface OpenWeatherMapService {
     @GET("weather")
     suspend fun getCurrentWeather(

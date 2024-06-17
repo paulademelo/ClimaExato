@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -32,8 +33,7 @@ fun SearchBar(cityName: String, onCityNameChange: (String) -> Unit, onSearch: ()
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = 50.dp, start = 16.dp, end = 16.dp, top = 40.dp),
-        contentAlignment = Alignment.CenterEnd,
+            .padding(40.dp, 50.dp, 16.dp, 50.dp),
     ) {
         OutlinedTextField(
             value = cityName,
@@ -41,7 +41,7 @@ fun SearchBar(cityName: String, onCityNameChange: (String) -> Unit, onSearch: ()
             label = {
                 Text(
                     "Digite o nome da cidade",
-                    style = TextStyle(color = Color.LightGray)
+                    style = MaterialTheme.typography.labelSmall
                 )
             },
             colors = TextFieldDefaults.outlinedTextFieldColors(
