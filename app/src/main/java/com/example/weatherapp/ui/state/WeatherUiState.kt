@@ -1,4 +1,4 @@
-package com.example.weatherapp.ui.sate
+package com.example.weatherapp.ui.state
 
 import com.example.weatherapp.data.api.WeatherResponse
 
