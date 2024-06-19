@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.weatherapp.presentation.viewmodels.WeatherViewModel
+import com.example.weatherapp.ui.sate.WeatherUiState
 import com.example.weatherapp.ui.theme.backgroundBrush
 import com.example.weatherapp.ui.widget.SearchBar
 import com.example.weatherapp.ui.widget.WeatherError
@@ -43,7 +44,7 @@ fun MainScreen(viewModel: WeatherViewModel = hiltViewModel()) {
     } else {
         Box(modifier = Modifier.fillMaxSize()) {
             when (val uiStateValue = uiState) {
-                is WeatherViewModel.WeatherUiState.Success -> {
+                is WeatherUiState.Success -> {
                     val weather = uiStateValue.weather
                     val backgroundColor = backgroundBrush(weather.weather.firstOrNull()?.id)
                     Box(
@@ -54,12 +55,12 @@ fun MainScreen(viewModel: WeatherViewModel = hiltViewModel()) {
                     WeatherInfo(uiStateValue)
                 }
 
-                is WeatherViewModel.WeatherUiState.Error -> {
+                is WeatherUiState.Error -> {
                     WeatherError(text = "Não conseguimos encontrar a cidade, tente novamente!")
                 }
 
-                is WeatherViewModel.WeatherUiState.Loading,
-                WeatherViewModel.WeatherUiState.Idle -> {
+                is WeatherUiState.Loading,
+                WeatherUiState.Idle -> {
                     Box(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center

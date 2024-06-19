@@ -13,10 +13,10 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.weatherapp.presentation.viewmodels.WeatherViewModel
+import com.example.weatherapp.ui.sate.WeatherUiState
 
 @Composable
-fun WeatherInfo(uiStateValue: WeatherViewModel.WeatherUiState.Success) {
+fun WeatherInfo(uiStateValue: WeatherUiState.Success) {
     val weather = uiStateValue.weather
     val weatherDescription = weather.weather.firstOrNull()?.description.orEmpty()
     val weatherIcon = icon(weather.weather.firstOrNull()?.id)

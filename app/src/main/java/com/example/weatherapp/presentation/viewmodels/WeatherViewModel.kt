@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.data.api.WeatherResponse
 import com.example.weatherapp.data.repositories.WeatherRepository
+import com.example.weatherapp.ui.sate.WeatherUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -37,12 +38,5 @@ class WeatherViewModel @Inject constructor(
                 _uiState.value = WeatherUiState.Error("Erro ao carregar dados, Tente novamente.")
             }
         }
-    }
-
-    sealed class WeatherUiState {
-        data object Idle : WeatherUiState()
-        data object Loading : WeatherUiState()
-        data class Success(val weather: WeatherResponse) : WeatherUiState()
-        data class Error(val message: String) : WeatherUiState()
     }
 }
