@@ -11,6 +11,7 @@
                   <entry key="Duration" value="90" />
                   <entry key="Tests" value="360" />
                   <entry key="Xiaomi 23129RAA4G" value="120" />
+                  <entry key="samsung SM-G970F" value="120" />
                 </map>
               </option>
             </AndroidTestResultsTableState>
@@ -25,6 +26,19 @@
                   <entry key="Pixel_3a_API_34_extension_level_7_x86_64" value="120" />
                   <entry key="Tests" value="360" />
                   <entry key="Xiaomi 23129RAA4G" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
+        <entry key="1247203667">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                  <entry key="samsung SM-G970F" value="120" />
                 </map>
               </option>
             </AndroidTestResultsTableState>
