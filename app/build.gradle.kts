@@ -78,7 +78,6 @@ dependencies {
     implementation(libs.play.services.basement)
     implementation(libs.play.services.location)
     implementation(libs.lottie.compose)
-    implementation(libs.accompanist)
     implementation(libs.coil.compose)
 
     // Retrofit
@@ -87,6 +86,7 @@ dependencies {
 
     // Dagger Hilt
     implementation(libs.hilt.android)
+    implementation(libs.play.services.contextmanager)
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
 
@@ -97,4 +97,11 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation(libs.dagger.hilt.android.testing)
+    testImplementation(libs.dagger.hilt.android.testing)
+    kaptAndroidTest(libs.hilt.compiler)
+    androidTestImplementation(libs.androidx.junit.v115)
 }

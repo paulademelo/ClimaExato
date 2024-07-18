@@ -13,7 +13,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.weatherapp.R
 import com.example.weatherapp.presentation.viewmodels.WeatherViewModel
 import com.example.weatherapp.ui.state.WeatherUiState
 import com.example.weatherapp.ui.theme.backgroundBrush
@@ -51,7 +53,7 @@ fun MainScreen(viewModel: WeatherViewModel = hiltViewModel()) {
                 }
 
                 is WeatherUiState.Error -> {
-                    WeatherError(text = "Não conseguimos encontrar a cidade, tente novamente!")
+                    WeatherError(text = stringResource(R.string.error_city_not_founded))
                 }
 
                 is WeatherUiState.Loading,

@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -19,6 +20,7 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.example.weatherapp.R
 import com.example.weatherapp.R.raw.sun
 import com.example.weatherapp.ui.theme.LinearGradientSunny
 
@@ -44,7 +46,7 @@ fun SplashScreen() {
                 modifier = Modifier.size(200.dp)
             )
             Text(
-                text = "Clima Exato",
+                text = stringResource(R.string.exact_weather),
                 style = TextStyle(
                     color = Color.White,
                     fontSize = 24.sp,

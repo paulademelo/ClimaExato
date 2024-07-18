@@ -21,9 +21,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import com.example.weatherapp.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -40,7 +42,7 @@ fun SearchBar(cityName: String, onCityNameChange: (String) -> Unit, onSearch: ()
             onValueChange = onCityNameChange,
             label = {
                 Text(
-                    "Digite o nome da cidade",
+                    stringResource(R.string.search_for_city),
                     style = MaterialTheme.typography.labelSmall
                 )
             },
@@ -73,7 +75,7 @@ fun SearchBar(cityName: String, onCityNameChange: (String) -> Unit, onSearch: ()
         ) {
             Icon(
                 imageVector = Icons.Default.Search,
-                contentDescription = "Search",
+                contentDescription = stringResource(R.string.search),
                 tint = Color.White
             )
         }

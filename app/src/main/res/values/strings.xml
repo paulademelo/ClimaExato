@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Clima exato</string>
+    <string name="icon_weather_description">Ícone relacionado ao tempo</string>
+    <string name="city_sp">São Paulo</string>
+    <string name="error_city_not_founded">Não conseguimos encontrar a cidade, tente novamente!</string>
+    <string name="search_for_city">Digite o nome da cidade</string>
+    <string name="search">Pesquisar</string>
+    <string name="error_get_data">Erro ao carregar dados, Tente novamente.</string>
+    <string name="error_unknown">Erro desconhecido</string>
+    <string name="exact_weather">Clima Exato</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.weatherapp.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.weatherapp.R
 import com.example.weatherapp.data.repositories.WeatherRepository
 import com.example.weatherapp.ui.state.WeatherUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +16,7 @@ import javax.inject.Inject
 class WeatherViewModel @Inject constructor(
     private val weatherRepository: WeatherRepository
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow<WeatherUiState>(WeatherUiState.Idle)
+    val _uiState = MutableStateFlow<WeatherUiState>(WeatherUiState.Idle)
     val uiState: StateFlow<WeatherUiState> = _uiState.asStateFlow()
 
     init {
